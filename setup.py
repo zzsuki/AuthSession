@@ -10,7 +10,7 @@ except ImportError:
 PY3 = sys.version_info > (3,)
 
 
-VERSION = None
+VERSION = '0.0.1'
 
 CLASSIFIERS = """
 Development Status :: 5 - Production/Stable
@@ -72,22 +72,22 @@ def read_requirements(path):
 
 
 setup(
-    name='项目名称',
+    name='AuthSession',
     version=VERSION,
-    description='项目简介',
+    description='用于处理鉴权的session，只适用于特殊情况，没有特殊需求的话还是推荐使用requests自带的auth模块',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='zzsuki',
     author_email='zzsuki@163.com',
     maintainer='zzsuki',
     maintainer_email='zzsuki@163.com',
-    url='项目git仓库url地址',
+    url='https://github.com/zzsuki/AuthSession.git',
     license='MIT',
-    keywords='项目关键字，可用于检索，以空格分隔',  # 也可使用
+    keywords='Session Auth token',  # 也可使用列表的方式
     platforms='any',
     classifiers=CLASSIFIERS.splitlines(),
     package_dir={'': 'src'},
-    packages=['项目package名称'],   # 项目package名称
+    packages=['AuthSession'],   # 项目package名称
     install_requires=read_requirements("requirements.txt"),
     include_package_data=True,      # MANIFEST.in
     setup_requires=[
