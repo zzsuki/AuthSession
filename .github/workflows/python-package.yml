@@ -37,4 +37,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test pip install
       run: |
-        pip install https://github.com/zzsuki/AuthSession.git
+        pip install git+https://github.com/zzsuki/AuthSession.git
