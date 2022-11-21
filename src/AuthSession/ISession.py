@@ -18,7 +18,6 @@ class ISession(Session, ABC):
         super().__init__()
         self.host = host
         self.token = None
-        self.timeout = 10
     
     @abstractmethod
     def authorize(self):
@@ -49,7 +48,11 @@ class ISession(Session, ABC):
             self.authorize()
         else:
             self.login()
-        return super().request(method=method.upper(), url=url, verify=False, timeout=self.timeout, *args, **kwargs)
+        if not kwargs.get('headers', None):
+            headers = self.headers
+        else:
+            headers = kwargs.pop('headers')
+        return super().request(method=method.upper(), url=url, headers=headers, verify=False, *args, **kwargs)
 
     def get(self, url=None, *args, **kwargs):
         return self.request(method='GET', url=url, *args, **kwargs)
